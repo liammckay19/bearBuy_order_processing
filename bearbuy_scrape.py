@@ -78,11 +78,14 @@ def main():
                     output_tsv += item[1]+"\t"
                 else:
                     output_tsv += "\t"
+
+                output_tsv += item[-4]+"\t"
+                output_tsv += item[-3]+"\t"
                 output_tsv += item[-2]+"\t"
                 output_tsv += item[-1]+"\t"
                 output_tsv += "\n"
     with open("allRequisitions.tsv", 'w') as tsvout:
-        tsvout.write("Requisition\tRequisition Number\tCompany\tNumber\tItem Description\tCatalog Number\tTotal Price\n")
+        tsvout.write("Requisition\tRequisition Number\tCompany\tNumber\tItem Description\tCatalog Number\tSize / Packaging\tUnit Price\tQuantity\tExt. Price\n")
         tsvout.write(output_tsv)
     print("wrote to allRequisitions.tsv")
 if __name__ == '__main__':

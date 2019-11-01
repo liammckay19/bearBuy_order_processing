@@ -32,4 +32,3 @@ Web scraper for BearBuy orders at UCSF
 
 
 Hit Ctrl-S, save webpage, complete in the same dir as bearbuy_scrape.py
-and it'll put all of the data into a one big summary tsv and individual jsons for every requisition.

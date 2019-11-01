@@ -24,5 +24,12 @@ Web scraper for BearBuy orders at UCSF
 ‘
 ## How to save a bearBuy Requisition:
 
+### On BearBuy:
+
+1. Documents>Search Documents>my requisitions
+
+2. Click on the requisition no. link
+
+
 Hit Ctrl-S, save webpage, complete in the same dir as bearbuy_scrape.py
 and it'll put all of the data into a one big summary tsv and individual jsons for every requisition.

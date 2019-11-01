@@ -6,6 +6,8 @@ import json as js
 import csv
 import glob 
 
+# Author Liam McKay
+
 def match_class(target):
     def do_match(tag):
         try:
@@ -65,6 +67,8 @@ def main():
 
         with open("data"+file_name.replace("html",'json'), 'w') as json_file_out:
             js.dump(json, json_file_out)
+        print("wrote to "+"data"+file_name.replace("html",'json'))
+
 
         for company, row in json.items():
             for number, item in row.items():
@@ -74,10 +78,12 @@ def main():
                     output_tsv += item[1]+"\t"
                 else:
                     output_tsv += "\t"
+                output_tsv += item[-2]+"\t"
                 output_tsv += item[-1]+"\t"
                 output_tsv += "\n"
     with open("allRequisitions.tsv", 'w') as tsvout:
         tsvout.write("Requisition\tRequisition Number\tCompany\tNumber\tItem Description\tCatalog Number\tTotal Price\n")
         tsvout.write(output_tsv)
-
-main()
+    print("wrote to allRequisitions.tsv")
+if __name__ == '__main__':
+    main()

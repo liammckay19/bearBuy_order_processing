@@ -12,6 +12,7 @@ Web scraper for BearBuy orders at UCSF
 - Make a virtual environment for this script. 
 
 `python3 -m venv ./../bearBuy_env`
+
 `source ../bearBuy_env/bin/activate`
 
 - When you load a requisition, save the Summary page as an HTML file in the same dir as bearbuy_scrape.py

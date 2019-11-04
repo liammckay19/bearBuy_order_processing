@@ -5,7 +5,7 @@ Web scraper for BearBuy orders at UCSF
 
 - Needs Python 3, pip
 
-## Quick how to
+## Quick how to set up
 
 - Download bearbuy_scrape.py - put it in its own folder
 
@@ -25,11 +25,13 @@ Web scraper for BearBuy orders at UCSF
 
 - Copy and paste allRequisitions.tsv into your favorite spreadsheet
 
-‘
-## How to save a bearBuy Requisition:
+
+## How to save and parse a bearBuy Requisition:
 
 ### On BearBuy:
 
 1. Documents>Search Documents>My Requisitions
 2. Click on the requisition no. link
 3. On the Summary tab page, Hit Ctrl-S, save webpage as HTML in same dir as bearbuy_scrape.py
+4. Run `python bearbuy_scrape.py`
+5. Output should have populated a allRequisitions.tsv file 

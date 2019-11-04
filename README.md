@@ -9,9 +9,7 @@ Web scraper for BearBuy orders at UCSF
 
 - Download bearbuy_scrape.py - put it in its own folder
 
-- Download all the pages when you look at a requisition
-
-- Put them in the same dir run python bearbuy_scrape.py
+- When you load a requisition, save the Summary page as an HTML file in the same dir as bearbuy_scrape.py
 
 - Download requirements.txt
 
@@ -26,9 +24,6 @@ Web scraper for BearBuy orders at UCSF
 
 ### On BearBuy:
 
-1. Documents>Search Documents>my requisitions
-
+1. Documents>Search Documents>My Requisitions
 2. Click on the requisition no. link
-
-
-Hit Ctrl-S, save webpage, complete in the same dir as bearbuy_scrape.py
+3. On the Summary tab page, Hit Ctrl-S, save webpage as HTML in same dir as bearbuy_scrape.py

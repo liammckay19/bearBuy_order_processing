@@ -19,9 +19,9 @@ Web scraper for BearBuy orders at UCSF
 
 - Run `pip install -r requirements.txt`
 
-- Run `python bearbuy_scrape.py`
-
 - When you load a requisition, save the Summary page as an HTML file in the same dir as bearbuy_scrape.py
+
+- Run `python bearbuy_scrape.py`
 
 - Copy and paste allRequisitions.tsv into your favorite spreadsheet
 

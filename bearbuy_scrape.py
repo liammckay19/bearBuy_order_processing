@@ -29,8 +29,10 @@ def main():
         with open(file_name, "r") as html_doc:
             soup = BeautifulSoup("".join(html_doc.readlines()), 'html.parser')
 
+            # the magic location of the info (hopefully BearBuy doesn't update their HTML soon)
             company_boxes = soup.find(['div', 'table', 'tbody', 'tr', 'td', 'div', 'div', 'div', 'table', 'tbody', 'tr', 'td'], recursive=True, attrs="ForegroundPanel")
             company_boxes = soup.find('td', attrs="ForegroundPanel")
+            # print(company_boxes)
             # print(mettlerToledo)
             # print([a for a in company_boxes.contents[1].children])
             findmysiblings = copy.copy(company_boxes.div.div.find('a', 'SupplierName'))
@@ -67,9 +69,13 @@ def main():
 
         with open("data"+file_name.replace("html",'json'), 'w') as json_file_out:
             js.dump(json, json_file_out)
-        print("wrote to "+"data"+file_name.replace("html",'json'))
+        if json:
+            print("wrote to "+"data"+file_name.replace("html",'json'))
+        else:
+            print("json is empty for "+"data"+file_name.replace("html",'json'))
 
 
+        # add data to output_tsv string
         for company, row in json.items():
             for number, item in row.items():
                 output_tsv += file_name+"\t"+file_name.replace("Summary - Requisition ","").replace(".html","")+"\t"+company+"\t"+number+"\t"
@@ -84,6 +90,8 @@ def main():
                 output_tsv += item[-2]+"\t"
                 output_tsv += item[-1]+"\t"
                 output_tsv += "\n"
+    
+    # output_tsv to allRequisitions.tsv
     with open("allRequisitions.tsv", 'w') as tsvout:
         tsvout.write("Requisition\tRequisition Number\tCompany\tNumber\tItem Description\tCatalog Number\tSize / Packaging\tUnit Price\tQuantity\tExt. Price\n")
         tsvout.write(output_tsv)

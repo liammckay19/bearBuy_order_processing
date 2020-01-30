@@ -31,11 +31,14 @@ def main():
 
             # the magic location of the info (hopefully BearBuy doesn't update their HTML soon)
             company_boxes = soup.find(['div', 'table', 'tbody', 'tr', 'td', 'div', 'div', 'div', 'table', 'tbody', 'tr', 'td'], recursive=True, attrs="ForegroundPanel")
-            company_boxes = soup.find('td', attrs="ForegroundPanel")
-            # print(company_boxes)
+            # company_boxes = soup.find('td', attrs="ForegroundPanel")
             # print(mettlerToledo)
             # print([a for a in company_boxes.contents[1].children])
-            findmysiblings = copy.copy(company_boxes.div.div.find('a', 'SupplierName'))
+            try:
+                findmysiblings = copy.copy(company_boxes.div.div.find('a', 'SupplierName'))
+            except AttributeError as e:
+                print(e)
+                continue
 
             json = {}
             for child in company_boxes.div.div.children:
@@ -66,6 +69,8 @@ def main():
                         else:
                             if row:
                                 json[company.string]={row[0]:row[1:-1]}
+                        print(row[:5])
+                        
 
         with open("data"+file_name.replace("html",'json'), 'w') as json_file_out:
             js.dump(json, json_file_out)

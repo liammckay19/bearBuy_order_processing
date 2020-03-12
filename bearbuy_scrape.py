@@ -26,7 +26,8 @@ def main():
     html_files = glob.glob("*.html")
     output_tsv = ""
     for file_name in html_files:
-        print(file_name)
+        rows_processed = 0
+
         with open(file_name, "r") as html_doc:
             soup = BeautifulSoup("".join(html_doc.readlines()), 'html.parser')
 
@@ -82,13 +83,13 @@ def main():
                         else:
                             if row:
                                 json[company.string]={row[0]:row[1:-1]}
+                rows_processed+=1
                         # print(row)
                         
 
 
         # add data to output_tsv string
         for company, row in json.items():
-            print(json.items())
             for number, item in row.items():
                 output_tsv += file_name+"\t"+file_name.replace("Summary - Requisition ","").replace(".html","")+"\t"+company+"\t"+number+"\t"
                 output_tsv += item[0]+"\t"
@@ -109,14 +110,14 @@ def main():
         with open("data"+file_name.replace("html",'json'), 'w') as json_file_out:
             js.dump(json, json_file_out)
         if json:
-            print("wrote to "+"data"+file_name.replace("html",'json'))
+            print("wrote to "+"data"+file_name.replace("html",'json')+"\t Lines Found = "+str(rows_processed))
         else:
             print("json is empty for "+"data"+file_name.replace("html",'json'))
 
 
     # output_tsv to allRequisitions.tsv
     with open("allRequisitions.tsv", 'w') as tsvout:
-        tsvout.write("Requisition\tRequisition Number\tCompany\tNumber\tItem Description\tCatalog Number\tSize / Packaging\tUnit Price\tQuantity\tExt. Price\n")
+        tsvout.write("Requisition\tRequisition Number\tCompany\tNumber\tItem Description\tCatalog Number\tSize / Packaging\tUnit Price\tQuantity\tExt. Price\tDate Complete\n")
         tsvout.write(output_tsv)
     print("wrote to allRequisitions.tsv")
 if __name__ == '__main__':

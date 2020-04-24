@@ -112,7 +112,7 @@ def main():
                     output_tsv += item[-2]+"\t"
                     output_tsv += item[-1]+"\t"
                     output_tsv += date_str+"\t"
-                    output_tsv += po+"\t"
+                    output_tsv += po
                     output_tsv += "\n"
 
         json['Date']=date_str
